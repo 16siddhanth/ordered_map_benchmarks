@@ -1,0 +1,13 @@
+{
+  "maps": ["global", "sharded", "skiplist", "tinystm", "stm"],
+  "workloads": ["read-heavy", "mixed", "range-heavy"],
+  "threads": [1, 4, 8],
+  "duration": "5s",
+  "warmup": "2s",
+  "initialSize": 10000,
+  "keySpace": 65536,
+  "rangeWidth": 256,
+  "seed": 1337,
+  "csv": "results/latest.csv",
+  "json": "results/latest.json"
+}

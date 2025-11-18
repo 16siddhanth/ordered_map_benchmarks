@@ -18,11 +18,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 19518237,
-    "opsPerSec" : 6505880.3884835,
+    "operations" : 18591351,
+    "opsPerSec" : 6196966.293911043,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 6.90738615378018E-4,
+      "meanMicros" : 0.0012174478336727653,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -37,11 +37,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 17260113,
-    "opsPerSec" : 5753229.326727829,
+    "operations" : 16387466,
+    "opsPerSec" : 5462369.177340913,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0015210792652400364,
+      "meanMicros" : 6.611760475963764E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -56,30 +56,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 7396339,
-    "opsPerSec" : 2465339.981853636,
+    "operations" : 6546371,
+    "opsPerSec" : 2182006.1409065756,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 1.2496571614686671,
-      "p50Micros" : 0,
-      "p95Micros" : 11,
-      "p99Micros" : 16
-    },
-    "metrics" : {
-      "stmCommits" : 0,
-      "stmAborts" : 0,
-      "maxRetries" : 0
-    }
-  }, {
-    "map" : "global",
-    "workload" : "read-heavy",
-    "threads" : 4,
-    "repeat" : 2,
-    "operations" : 6427263,
-    "opsPerSec" : 2142353.0695547527,
-    "durationMillis" : 3000,
-    "latency" : {
-      "meanMicros" : 1.434582496468559,
+      "meanMicros" : 1.4139585122810792,
       "p50Micros" : 0,
       "p95Micros" : 12,
       "p99Micros" : 17
@@ -91,14 +72,33 @@
     }
   }, {
     "map" : "global",
+    "workload" : "read-heavy",
+    "threads" : 4,
+    "repeat" : 2,
+    "operations" : 6917678,
+    "opsPerSec" : 2305823.268303761,
+    "durationMillis" : 3000,
+    "latency" : {
+      "meanMicros" : 1.3320453770759495,
+      "p50Micros" : 0,
+      "p95Micros" : 11,
+      "p99Micros" : 16
+    },
+    "metrics" : {
+      "stmCommits" : 0,
+      "stmAborts" : 0,
+      "maxRetries" : 0
+    }
+  }, {
+    "map" : "global",
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 16092660,
-    "opsPerSec" : 5364076.287456132,
+    "operations" : 15739585,
+    "opsPerSec" : 5246375.5326459445,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0010883843938789485,
+      "meanMicros" : 0.0018922989392668231,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -113,11 +113,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 15837743,
-    "opsPerSec" : 5279116.128689794,
+    "operations" : 15742929,
+    "opsPerSec" : 5247498.256506425,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 8.93182822830248E-4,
+      "meanMicros" : 0.001151882219630159,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -132,11 +132,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 4703283,
-    "opsPerSec" : 1567706.2828701779,
+    "operations" : 4617464,
+    "opsPerSec" : 1539104.217908612,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 2.1351020127855374,
+      "meanMicros" : 2.18061451047588,
       "p50Micros" : 0,
       "p95Micros" : 14,
       "p99Micros" : 20
@@ -151,14 +151,14 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 4784816,
-    "opsPerSec" : 1594865.7903376212,
+    "operations" : 4593038,
+    "opsPerSec" : 1530965.015380563,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 2.098655622285162,
+      "meanMicros" : 2.1934510448204434,
       "p50Micros" : 0,
       "p95Micros" : 14,
-      "p99Micros" : 19
+      "p99Micros" : 20
     },
     "metrics" : {
       "stmCommits" : 0,
@@ -170,11 +170,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 16087934,
-    "opsPerSec" : 5362528.775269795,
+    "operations" : 17066334,
+    "opsPerSec" : 5688611.528472231,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 7.107811357256936E-4,
+      "meanMicros" : 3.9991013887341007E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -189,11 +189,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 16165232,
-    "opsPerSec" : 5388293.471283666,
+    "operations" : 17252210,
+    "opsPerSec" : 5750588.508504334,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 6.408197543963489E-4,
+      "meanMicros" : 4.558836230256877E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -208,11 +208,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 28922542,
-    "opsPerSec" : 9640496.795229362,
+    "operations" : 29109993,
+    "opsPerSec" : 9703105.53540541,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0792841099513314,
+      "meanMicros" : 0.08106968627577478,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 2
@@ -227,11 +227,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 30051107,
-    "opsPerSec" : 1.001664682377585E7,
+    "operations" : 29444557,
+    "opsPerSec" : 9814466.431784725,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.07031325002436682,
+      "meanMicros" : 0.08069484624951226,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 2
@@ -246,11 +246,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 16254490,
-    "opsPerSec" : 5418009.823055014,
+    "operations" : 16964202,
+    "opsPerSec" : 5654570.567831735,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 6.792584695059642E-4,
+      "meanMicros" : 1.8409354003212175E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -265,11 +265,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 16070713,
-    "opsPerSec" : 5356729.8682126785,
+    "operations" : 16323484,
+    "opsPerSec" : 5440959.640586764,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0010664119258429914,
+      "meanMicros" : 0.002101267106948492,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -284,11 +284,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 22706991,
-    "opsPerSec" : 7568735.772653542,
+    "operations" : 22857009,
+    "opsPerSec" : 7618696.982337876,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.1962704789903691,
+      "meanMicros" : 0.19882588312407803,
       "p50Micros" : 0,
       "p95Micros" : 1,
       "p99Micros" : 5
@@ -303,11 +303,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 22798992,
-    "opsPerSec" : 7599304.512366941,
+    "operations" : 22430696,
+    "opsPerSec" : 7476600.018863314,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.1962526238002101,
+      "meanMicros" : 0.20385586786963722,
       "p50Micros" : 0,
       "p95Micros" : 1,
       "p99Micros" : 5
@@ -322,11 +322,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 12167013,
-    "opsPerSec" : 4055568.4279151773,
+    "operations" : 11934232,
+    "opsPerSec" : 3977995.3428713214,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.001030244645912682,
+      "meanMicros" : 4.3387794036516133E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -341,11 +341,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 12073937,
-    "opsPerSec" : 4024558.411557265,
+    "operations" : 12314252,
+    "opsPerSec" : 4104642.1796056456,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 9.387990015187258E-4,
+      "meanMicros" : 4.677507005703635E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -360,11 +360,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 33243523,
-    "opsPerSec" : 1.1080777888955615E7,
+    "operations" : 33786354,
+    "opsPerSec" : 1.1261728843451995E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.005852989768864148,
+      "meanMicros" : 0.0022646717073999756,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -379,11 +379,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 33424225,
-    "opsPerSec" : 1.1140824060242709E7,
+    "operations" : 33749094,
+    "opsPerSec" : 1.124933848989076E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.005356264804943121,
+      "meanMicros" : 0.002242963914823906,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -398,11 +398,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 11161595,
-    "opsPerSec" : 3720447.18151192,
+    "operations" : 11172860,
+    "opsPerSec" : 3724208.6134611433,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.001043488856207379,
+      "meanMicros" : 2.854237858525033E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -417,11 +417,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 11017896,
-    "opsPerSec" : 3672506.165248754,
+    "operations" : 11110283,
+    "opsPerSec" : 3703357.713942808,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0020149945143791517,
+      "meanMicros" : 4.773955802925992E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -436,11 +436,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 30824335,
-    "opsPerSec" : 1.0274484082383698E7,
+    "operations" : 31345214,
+    "opsPerSec" : 1.0448110813550035E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.006739480348886683,
+      "meanMicros" : 0.002755604093179903,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -455,11 +455,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 31049636,
-    "opsPerSec" : 1.0349555674283331E7,
+    "operations" : 30523976,
+    "opsPerSec" : 1.017430934871236E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.006086544782682799,
+      "meanMicros" : 0.0031940465422984213,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -474,17 +474,17 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 11035494,
-    "opsPerSec" : 3678415.6439521476,
+    "operations" : 10766317,
+    "opsPerSec" : 3588696.0735417707,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0028448205399776395,
+      "meanMicros" : 0.004162519086146173,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 11035494,
+      "stmCommits" : 10766317,
       "stmAborts" : 0,
       "maxRetries" : 0
     }
@@ -493,17 +493,17 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 10867926,
-    "opsPerSec" : 3622567.8882986186,
+    "operations" : 10773915,
+    "opsPerSec" : 3591233.225612753,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0045974733357588195,
+      "meanMicros" : 0.0034881470663171185,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 10867926,
+      "stmCommits" : 10773915,
       "stmAborts" : 0,
       "maxRetries" : 0
     }
@@ -512,18 +512,18 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 29067129,
-    "opsPerSec" : 9688600.553908039,
+    "operations" : 28208036,
+    "opsPerSec" : 9402407.824041024,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.010181156866231956,
+      "meanMicros" : 0.00845897247153258,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 29067129,
-      "stmAborts" : 84,
+      "stmCommits" : 28208036,
+      "stmAborts" : 87,
       "maxRetries" : 1
     }
   }, {
@@ -531,18 +531,18 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 27883554,
-    "opsPerSec" : 9294268.86402501,
+    "operations" : 28008654,
+    "opsPerSec" : 9335811.89218269,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.01324063639807178,
+      "meanMicros" : 0.009182804714571433,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 27883554,
-      "stmAborts" : 84,
+      "stmCommits" : 28008654,
+      "stmAborts" : 96,
       "maxRetries" : 1
     }
   }, {
@@ -550,17 +550,17 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 9759300,
-    "opsPerSec" : 3253019.8499282575,
+    "operations" : 9765471,
+    "opsPerSec" : 3255052.7927398933,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.00409506829383255,
+      "meanMicros" : 0.0051339049596276515,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 9759300,
+      "stmCommits" : 9765471,
       "stmAborts" : 0,
       "maxRetries" : 0
     }
@@ -569,17 +569,17 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 9876481,
-    "opsPerSec" : 3292087.953487588,
+    "operations" : 9561757,
+    "opsPerSec" : 3187169.3776887706,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.003843575459720927,
+      "meanMicros" : 0.004684599284420217,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 9876481,
+      "stmCommits" : 9561757,
       "stmAborts" : 0,
       "maxRetries" : 0
     }
@@ -588,18 +588,18 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 27235671,
-    "opsPerSec" : 9078142.177319255,
+    "operations" : 26441072,
+    "opsPerSec" : 8813434.34261787,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.010659072801988245,
+      "meanMicros" : 0.009324205917218486,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 27235671,
-      "stmAborts" : 338,
+      "stmCommits" : 26441072,
+      "stmAborts" : 347,
       "maxRetries" : 1
     }
   }, {
@@ -607,30 +607,30 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 26219056,
-    "opsPerSec" : 8739464.539501207,
+    "operations" : 25132462,
+    "opsPerSec" : 8377097.217500647,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.012007754970278107,
+      "meanMicros" : 0.016076220467378007,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
     },
     "metrics" : {
-      "stmCommits" : 26219056,
-      "stmAborts" : 317,
-      "maxRetries" : 2
+      "stmCommits" : 25132462,
+      "stmAborts" : 290,
+      "maxRetries" : 1
     }
   }, {
     "map" : "stm",
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 11629033,
-    "opsPerSec" : 3876221.694847204,
+    "operations" : 10627491,
+    "opsPerSec" : 3542380.2490509585,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0012197918777941382,
+      "meanMicros" : 0.001082099246190846,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -645,11 +645,11 @@
     "workload" : "read-heavy",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 9005848,
-    "opsPerSec" : 3001871.1596052186,
+    "operations" : 9092304,
+    "opsPerSec" : 3030698.8414729037,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0023974421953379624,
+      "meanMicros" : 0.003887683473847773,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -664,11 +664,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 29283923,
-    "opsPerSec" : 9760836.16296859,
+    "operations" : 31145580,
+    "opsPerSec" : 1.0381505872992665E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0063934739891236565,
+      "meanMicros" : 0.0030752357156296336,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -683,11 +683,11 @@
     "workload" : "read-heavy",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 27371269,
-    "opsPerSec" : 9123426.621818649,
+    "operations" : 29293757,
+    "opsPerSec" : 9764305.623126628,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.019152674287772335,
+      "meanMicros" : 0.0038653287115066872,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -702,11 +702,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 1,
-    "operations" : 8762198,
-    "opsPerSec" : 2920663.016642154,
+    "operations" : 10482812,
+    "opsPerSec" : 3494168.316653058,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.004564836357270174,
+      "meanMicros" : 0.0028928306641385917,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -721,11 +721,11 @@
     "workload" : "mixed",
     "threads" : 1,
     "repeat" : 2,
-    "operations" : 8978471,
-    "opsPerSec" : 2992745.107107605,
+    "operations" : 10417457,
+    "opsPerSec" : 3472401.991038421,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.0018974277468847423,
+      "meanMicros" : 8.610546700600732E-4,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -740,11 +740,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 1,
-    "operations" : 28506778,
-    "opsPerSec" : 9501847.453584481,
+    "operations" : 30954360,
+    "opsPerSec" : 1.0317802868571764E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.013938474562084848,
+      "meanMicros" : 0.004482050347673155,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0
@@ -759,11 +759,11 @@
     "workload" : "mixed",
     "threads" : 4,
     "repeat" : 2,
-    "operations" : 27739544,
-    "opsPerSec" : 9246002.928142603,
+    "operations" : 30267236,
+    "opsPerSec" : 1.00887601712339E7,
     "durationMillis" : 3000,
     "latency" : {
-      "meanMicros" : 0.009633359510163541,
+      "meanMicros" : 0.0034580957441901865,
       "p50Micros" : 0,
       "p95Micros" : 0,
       "p99Micros" : 0

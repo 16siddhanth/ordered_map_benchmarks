@@ -11,6 +11,7 @@ org/example/orderedmap/stm/library/LibraryStmOrderedMap.class
 org/example/orderedmap/locking/ShardedOrderedMap.class
 org/example/orderedmap/benchmarks/MapType$1.class
 org/example/orderedmap/benchmarks/BenchmarkConfig$Builder.class
+org/example/orderedmap/benchmarks/BenchmarkResult$SerializableConfig.class
 org/example/orderedmap/stm/tiny/TinyStm$TinyCallable.class
 org/example/orderedmap/benchmarks/WorkloadProfile.class
 org/example/orderedmap/benchmarks/LatencyStats.class
@@ -26,9 +27,12 @@ org/example/orderedmap/benchmarks/BenchmarkConfig$HelpException.class
 org/example/orderedmap/benchmarks/BenchmarkRunner$WorkerResult.class
 org/example/orderedmap/locking/ShardedOrderedMap$Shard.class
 org/example/orderedmap/benchmarks/RunResult.class
+org/example/orderedmap/benchmarks/BenchmarkResult$SerializableMetrics.class
 org/example/orderedmap/api/OrderedMap.class
 org/example/orderedmap/benchmarks/BenchmarkResult$SerializableResult.class
+org/example/orderedmap/benchmarks/BenchmarkResult$SerializableLatency.class
 org/example/orderedmap/benchmarks/MapType$5.class
 org/example/orderedmap/benchmarks/MapType$2.class
+org/example/orderedmap/benchmarks/BenchmarkResult$SerializableRun.class
 org/example/orderedmap/benchmarks/BenchmarkResult.class
 org/example/orderedmap/stm/tiny/TinyStmOrderedMap.class

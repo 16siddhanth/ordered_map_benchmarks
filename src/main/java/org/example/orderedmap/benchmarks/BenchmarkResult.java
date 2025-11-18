@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import org.example.orderedmap.api.MapMetrics;
 
@@ -30,16 +31,17 @@ public final class BenchmarkResult {
     }
 
     public void printSummary(PrintStream out) {
-    out.printf("%n%-10s %-12s %-7s %-12s %-12s %-12s %-9s %-9s %-9s %-12s %-12s %-10s %-11s%n",
-        "Map", "Workload", "Threads", "Operations", "Ops/sec", "Duration(ms)",
+    out.printf("%n%-10s %-12s %-7s %-7s %-12s %-12s %-12s %-9s %-9s %-9s %-12s %-12s %-10s %-11s%n",
+        "Map", "Workload", "Threads", "Repeat", "Operations", "Ops/sec", "Duration(ms)",
         "Avg(us)", "P50(us)", "P95(us)", "P99(us)", "STM commits", "STM aborts", "Max retries");
         for (RunResult run : runs) {
             LatencyStats latency = run.latency();
             MapMetrics metrics = run.metrics();
-        out.printf("%-10s %-12s %-7d %-12d %-12.2f %-12d %-9.2f %-9d %-9d %-12d %-12d %-10d %-11d%n",
+        out.printf("%-10s %-12s %-7d %-7d %-12d %-12.2f %-12d %-9.2f %-9d %-9d %-12d %-12d %-10d %-11d%n",
                     run.mapType().id(),
                     run.workload().id(),
                     run.threadCount(),
+                    run.repeat(),
                     run.totalOperations(),
                     run.operationsPerSecond(),
                     run.durationMillis(),
@@ -62,15 +64,16 @@ public final class BenchmarkResult {
             Files.createDirectories(parent);
         }
         try (var writer = Files.newBufferedWriter(path)) {
-            writer.write("map,workload,threads,operations,ops_per_sec,duration_ms,avg_us,p50_us,p95_us,p99_us,stm_commits,stm_aborts,stm_max_retries");
+            writer.write("map,workload,threads,repeat,operations,ops_per_sec,duration_ms,avg_us,p50_us,p95_us,p99_us,stm_commits,stm_aborts,stm_max_retries");
             writer.newLine();
             for (RunResult run : runs) {
                 LatencyStats latency = run.latency();
                 MapMetrics metrics = run.metrics();
-        writer.write(String.format(Locale.ROOT, "%s,%s,%d,%d,%.4f,%d,%.4f,%d,%d,%d,%d,%d,%d",
+        writer.write(String.format(Locale.ROOT, "%s,%s,%d,%d,%d,%.4f,%d,%.4f,%d,%d,%d,%d,%d,%d",
                         run.mapType().id(),
                         run.workload().id(),
                         run.threadCount(),
+                        run.repeat(),
                         run.totalOperations(),
                         run.operationsPerSecond(),
                         run.durationMillis(),
@@ -95,9 +98,94 @@ public final class BenchmarkResult {
             Files.createDirectories(parent);
         }
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writerWithDefaultPrettyPrinter().writeValue(path.toFile(), new SerializableResult(config, runs));
+        mapper.writerWithDefaultPrettyPrinter().writeValue(path.toFile(), SerializableResult.from(config, runs));
     }
 
-    private record SerializableResult(BenchmarkConfig config, List<RunResult> runs) {
+    private record SerializableResult(SerializableConfig config, List<SerializableRun> runs) {
+        static SerializableResult from(BenchmarkConfig config, List<RunResult> runs) {
+            List<SerializableRun> serializableRuns = runs.stream()
+                    .map(SerializableRun::from)
+                    .collect(Collectors.toList());
+            return new SerializableResult(SerializableConfig.from(config), serializableRuns);
+        }
+    }
+
+    private record SerializableConfig(
+            List<String> maps,
+            List<String> workloads,
+            List<Integer> threads,
+            int initialSize,
+            int keySpace,
+            int rangeWidth,
+            long warmupMillis,
+            long durationMillis,
+            int repeats,
+            long seed,
+            String csvOutput,
+            String jsonOutput) {
+
+        static SerializableConfig from(BenchmarkConfig config) {
+            return new SerializableConfig(
+                    config.mapTypes().stream().map(MapType::id).collect(Collectors.toList()),
+                    config.workloads().stream().map(WorkloadProfile::id).collect(Collectors.toList()),
+                    config.threadCounts(),
+                    config.initialSize(),
+                    config.keySpace(),
+                    config.rangeWidth(),
+                    config.warmupDuration().toMillis(),
+                    config.runDuration().toMillis(),
+                    config.repeats(),
+                    config.seed(),
+                    config.csvOutput() == null ? null : config.csvOutput().toString(),
+                    config.jsonOutput() == null ? null : config.jsonOutput().toString()
+            );
+        }
+    }
+
+    private record SerializableRun(
+            String map,
+            String workload,
+            int threads,
+            int repeat,
+            long operations,
+            double opsPerSec,
+            long durationMillis,
+            SerializableLatency latency,
+            SerializableMetrics metrics) {
+
+        static SerializableRun from(RunResult run) {
+            return new SerializableRun(
+                    run.mapType().id(),
+                    run.workload().id(),
+                    run.threadCount(),
+                    run.repeat(),
+                    run.totalOperations(),
+                    run.operationsPerSecond(),
+                    run.durationMillis(),
+                    SerializableLatency.from(run.latency()),
+                    SerializableMetrics.from(run.metrics())
+            );
+        }
+    }
+
+    private record SerializableLatency(double meanMicros, long p50Micros, long p95Micros, long p99Micros) {
+        static SerializableLatency from(LatencyStats stats) {
+            return new SerializableLatency(
+                    stats.meanMicros(),
+                    stats.p50Micros(),
+                    stats.p95Micros(),
+                    stats.p99Micros()
+            );
+        }
+    }
+
+    private record SerializableMetrics(long stmCommits, long stmAborts, long maxRetries) {
+        static SerializableMetrics from(MapMetrics metrics) {
+            return new SerializableMetrics(
+                    metrics.stmCommits(),
+                    metrics.stmAborts(),
+                    metrics.maxRetries()
+            );
+        }
     }
 }

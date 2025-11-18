@@ -3,6 +3,7 @@ package org.example.orderedmap.benchmarks;
 import java.time.Duration;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -21,6 +22,7 @@ class BenchmarkRunnerTest {
                 .withRangeWidth(32)
                 .withWarmup(Duration.ofMillis(100))
                 .withRunDuration(Duration.ofMillis(200))
+        .withRepeats(2)
                 .withSeed(1234L)
                 .build();
 
@@ -28,8 +30,11 @@ class BenchmarkRunnerTest {
         BenchmarkResult result = runner.runAll(config);
         assertNotNull(result);
         assertFalse(result.runs().isEmpty());
+        assertEquals(2, result.runs().size());
         RunResult run = result.runs().get(0);
         assertTrue(run.totalOperations() > 0);
         assertTrue(run.operationsPerSecond() > 0.0d);
+        assertEquals(1, run.repeat());
+        assertEquals(2, result.runs().get(1).repeat());
     }
 }

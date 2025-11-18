@@ -48,14 +48,20 @@ public final class BenchmarkRunner {
         for (MapType mapType : config.mapTypes()) {
             for (WorkloadProfile workload : config.workloads()) {
                 for (int threads : config.threadCounts()) {
-                    runs.add(runSingle(config, mapType, workload, threads));
+                    for (int repeat = 1; repeat <= config.repeats(); repeat++) {
+                        runs.add(runSingle(config, mapType, workload, threads, repeat));
+                    }
                 }
             }
         }
         return new BenchmarkResult(config, runs);
     }
 
-    private RunResult runSingle(BenchmarkConfig config, MapType mapType, WorkloadProfile workload, int threadCount) {
+    private RunResult runSingle(BenchmarkConfig config,
+                                MapType mapType,
+                                WorkloadProfile workload,
+                                int threadCount,
+                                int repeatIndex) {
         try (OrderedMap<Integer, Integer> map = mapType.create()) {
             seedData(map, config.initialSize());
             if (!config.warmupDuration().isZero()) {
@@ -67,7 +73,8 @@ public final class BenchmarkRunner {
             double opsPerSecond = measurement.totalOperations / (measurement.durationNanos / 1_000_000_000.0d);
             LatencyStats latency = LatencyStats.fromMicros(measurement.latencies);
             long durationMillis = TimeUnit.NANOSECONDS.toMillis(measurement.durationNanos);
-            return new RunResult(mapType, workload, threadCount, measurement.totalOperations, opsPerSecond, durationMillis, latency, metrics);
+            return new RunResult(mapType, workload, threadCount, repeatIndex,
+                    measurement.totalOperations, opsPerSecond, durationMillis, latency, metrics);
         }
     }
 

@@ -9,5 +9,6 @@
   "rangeWidth": 256,
   "seed": 1337,
   "csv": "results/latest.csv",
-  "json": "results/latest.json"
+  "json": "results/latest.json",
+  "repeats": 1
 }

@@ -9,6 +9,7 @@ public record RunResult(
         MapType mapType,
         WorkloadProfile workload,
         int threadCount,
+        int repeat,
         long totalOperations,
         double operationsPerSecond,
         long durationMillis,

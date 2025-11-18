@@ -27,6 +27,7 @@ public final class BenchmarkConfig {
     private final int rangeWidth;
     private final Duration warmupDuration;
     private final Duration runDuration;
+    private final int repeats;
     private final long seed;
     private final Path csvOutput;
     private final Path jsonOutput;
@@ -39,7 +40,8 @@ public final class BenchmarkConfig {
         this.keySpace = builder.keySpace;
         this.rangeWidth = builder.rangeWidth;
         this.warmupDuration = builder.warmupDuration;
-        this.runDuration = builder.runDuration;
+    this.runDuration = builder.runDuration;
+    this.repeats = builder.repeats;
         this.seed = builder.seed;
         this.csvOutput = builder.csvOutput;
         this.jsonOutput = builder.jsonOutput;
@@ -75,6 +77,10 @@ public final class BenchmarkConfig {
 
     public Duration runDuration() {
         return runDuration;
+    }
+
+    public int repeats() {
+        return repeats;
     }
 
     public long seed() {
@@ -134,6 +140,7 @@ public final class BenchmarkConfig {
         out.println("  --key-space <n>       Range of keys randomly chosen during workloads");
         out.println("  --range-width <n>     Width of generated range queries");
         out.println("  --seed <n>            Random seed for reproducible workloads");
+        out.println("  --repeats <n>         Number of times to repeat each configuration (default 1)");
         out.println("  --csv <path>          Optional CSV output path");
         out.println("  --json <path>         Optional JSON output path");
         out.println("  --help                Display this help message");
@@ -180,6 +187,7 @@ public final class BenchmarkConfig {
         private int rangeWidth = 128;
         private Duration warmupDuration = Duration.ofSeconds(2);
         private Duration runDuration = Duration.ofSeconds(5);
+        private int repeats = 1;
         private long seed = 1337L;
         private Path csvOutput;
         private Path jsonOutput;
@@ -224,6 +232,14 @@ public final class BenchmarkConfig {
             return this;
         }
 
+        public Builder withRepeats(int repeats) {
+            if (repeats <= 0) {
+                throw new IllegalArgumentException("repeats must be positive");
+            }
+            this.repeats = repeats;
+            return this;
+        }
+
         public Builder withSeed(long seed) {
             this.seed = seed;
             return this;
@@ -252,6 +268,7 @@ public final class BenchmarkConfig {
                 case "seed" -> withSeed(Long.parseLong(value));
                 case "csv" -> withCsvOutput(Path.of(value));
                 case "json" -> withJsonOutput(Path.of(value));
+                case "repeats" -> withRepeats(Integer.parseInt(value));
                 default -> throw new IllegalArgumentException("Unknown option: --" + key);
             }
         }
@@ -294,6 +311,9 @@ public final class BenchmarkConfig {
                 if (file.json != null) {
                     withJsonOutput(Path.of(file.json));
                 }
+                if (file.repeats != null) {
+                    withRepeats(file.repeats);
+                }
             } catch (IOException io) {
                 throw new IllegalArgumentException("Failed to read config file " + path + ": " + io.getMessage(), io);
             }
@@ -327,6 +347,9 @@ public final class BenchmarkConfig {
             if (warmupDuration.isNegative()) {
                 throw new IllegalArgumentException("warmup must not be negative");
             }
+            if (repeats <= 0) {
+                throw new IllegalArgumentException("repeats must be positive");
+            }
             return new BenchmarkConfig(this);
         }
 
@@ -351,6 +374,7 @@ public final class BenchmarkConfig {
         Long seed;
         String csv;
         String json;
+        Integer repeats;
     }
 
     static class HelpException extends RuntimeException {

@@ -28,26 +28,11 @@ The shaded artefact lands at `target/ordered-map-benchmarks-1.0-SNAPSHOT.jar`.
 
 Execute the runner with command-line flags to choose map implementations, workloads, thread counts, and durations.
 
-### Quick Example
-
 ```bash
-java -jar target/ordered-map-benchmarks-1.0-SNAPSHOT.jar \
-  --workloads read-heavy,mixed,range-heavy \
-  --maps global,sharded,skiplist,tinystm,stm \
-  --threads 1,4,8 \
-  --duration 5s
-```
-
-### Using the Bundled Configuration
-
-A reusable scenario lives at `src/main/resources/config/default-benchmarks.json`. Load it and override selected options:
-
-```bash
-java -jar target/ordered-map-benchmarks-1.0-SNAPSHOT.jar \
-  --config src/main/resources/config/default-benchmarks.json \
-  --threads 2,6,12 \
-  --csv results/custom.csv \
-  --json results/custom.json
+mvn clean package
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+./scripts/run_all_maps.sh
 ```
 
 ### Output

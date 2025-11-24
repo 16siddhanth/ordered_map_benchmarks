@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordered Map Benchmarks</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #22c55e;
+            --terminal-bg: #000000;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin: 0;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #334155;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal {
+            background-color: var(--terminal-bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            border: 1px solid #334155;
+            margin-bottom: 2rem;
+        }
+
+        .terminal-line {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .terminal-line.error { color: #ef4444; }
+        .terminal-line.success { color: #22c55e; }
+        .terminal-line.info { color: #3b82f6; }
+
+        /* Loading animation */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Ordered Map Benchmarks</h1>
+                <div class="subtitle">Real-time visualization of concurrent data structures</div>
+            </div>
+            <div>
+                <a href="https://github.com/16siddhanth/ordered_map_benchmarks" target="_blank" style="color: var(--text-secondary); text-decoration: none;">GitHub Repo ↗</a>
+            </div>
+        </header>
+
+        <div class="controls">
+            <button id="runBtn" onclick="startBenchmark()">
+                <div class="spinner" id="btnSpinner"></div>
+                <span id="btnText">Run Benchmark</span>
+            </button>
+            <div class="status" id="statusText">Ready to start</div>
+        </div>
+
+        <div class="card terminal" id="terminal">
+            <div class="terminal-line info">System ready. Click 'Run Benchmark' to start.</div>
+        </div>
+
+        <div id="resultsSection" class="hidden">
+            <div class="grid">
+                <div class="card">
+                    <h2>🚀 Throughput (Read-Heavy)</h2>
+                    <div class="chart-container">
+                        <canvas id="readHeavyChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>⚖️ Throughput (Mixed)</h2>
+                    <div class="chart-container">
+                        <canvas id="mixedChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h2>⏱️ Latency (P95)</h2>
+                    <div class="chart-container">
+                        <canvas id="latencyChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>📊 Operations Summary</h2>
+                    <div class="chart-container">
+                        <canvas id="opsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let charts = {};
+
+        function startBenchmark() {
+            const btn = document.getElementById('runBtn');
+            const spinner = document.getElementById('btnSpinner');
+            const btnText = document.getElementById('btnText');
+            const status = document.getElementById('statusText');
+            const terminal = document.getElementById('terminal');
+            const resultsSection = document.getElementById('resultsSection');
+
+            // Reset UI
+            btn.disabled = true;
+            spinner.style.display = 'block';
+            btnText.textContent = 'Running...';
+            status.textContent = 'Benchmark in progress...';
+            terminal.innerHTML = '';
+            resultsSection.classList.add('hidden');
+
+            const eventSource = new EventSource('/run_benchmark');
+
+            eventSource.onmessage = function(event) {
+                if (event.data === '[DONE]') {
+                    eventSource.close();
+                    finishBenchmark();
+                    return;
+                }
+                
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.textContent = event.data;
+                terminal.appendChild(line);
+                terminal.scrollTop = terminal.scrollHeight;
+            };
+
+            eventSource.onerror = function(err) {
+                console.error("EventSource failed:", err);
+                eventSource.close();
+                btn.disabled = false;
+                spinner.style.display = 'none';
+                btnText.textContent = 'Run Benchmark';
+                status.textContent = 'Error occurred';
+                
+                const line = document.createElement('div');
+                line.className = 'terminal-line error';
+                line.textContent = 'Connection error occurred.';
+                terminal.appendChild(line);
+            };
+        }
+
+        function finishBenchmark() {
+            const btn = document.getElementById('runBtn');
+            const spinner = document.getElementById('btnSpinner');
+            const btnText = document.getElementById('btnText');
+            const status = document.getElementById('statusText');
+            
+            btn.disabled = false;
+            spinner.style.display = 'none';
+            btnText.textContent = 'Run Again';
+            status.textContent = 'Benchmark completed successfully!';
+            
+            fetchResults();
+        }
+
+        async function fetchResults() {
+            try {
+                const response = await fetch('/api/results');
+                const data = await response.json();
+                
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+
+                document.getElementById('resultsSection').classList.remove('hidden');
+                renderCharts(data);
+                
+                // Scroll to results
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            } catch (e) {
+                console.error("Failed to fetch results", e);
+            }
+        }
+
+        function renderCharts(data) {
+            // Process data
+            // We need to aggregate runs (average across repeats)
+            const runs = data.runs;
+            
+            // Helper to group by
+            const groupBy = (arr, key) => arr.reduce((acc, item) => {
+                (acc[item[key]] = acc[item[key]] || []).push(item);
+                return acc;
+            }, {});
+
+            // 1. Read Heavy Throughput vs Threads
+            const readHeavyRuns = runs.filter(r => r.workload === 'read-heavy');
+            renderThroughputChart('readHeavyChart', readHeavyRuns, 'Read-Heavy Throughput');
+
+            // 2. Mixed Throughput vs Threads
+            const mixedRuns = runs.filter(r => r.workload === 'mixed');
+            renderThroughputChart('mixedChart', mixedRuns, 'Mixed Workload Throughput');
+
+            // 3. Latency P95 (Average across all runs per map)
+            renderLatencyChart('latencyChart', runs);
+
+            // 4. Total Operations (Pie chart of total ops processed by each map type in this suite)
+            renderOpsChart('opsChart', runs);
+        }
+
+        function renderThroughputChart(canvasId, runs, title) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            
+            // Group by map type
+            const mapGroups = {};
+            runs.forEach(run => {
+                if (!mapGroups[run.map]) mapGroups[run.map] = {};
+                if (!mapGroups[run.map][run.threads]) mapGroups[run.map][run.threads] = [];
+                mapGroups[run.map][run.threads].push(run.opsPerSec);
+            });
+
+            const datasets = Object.keys(mapGroups).map((map, index) => {
+                const threadCounts = Object.keys(mapGroups[map]).sort((a, b) => Number(a) - Number(b));
+                const averages = threadCounts.map(t => {
+                    const values = mapGroups[map][t];
+                    return values.reduce((a, b) => a + b, 0) / values.length;
+                });
+
+                const colors = ['#3b82f6', '#ef4444', '#22c55e', '#eab308', '#a855f7'];
+                
+                return {
+                    label: map,
+                    data: averages,
+                    borderColor: colors[index % colors.length],
+                    backgroundColor: colors[index % colors.length],
+                    tension: 0.3
+                };
+            });
+
+            // Get all unique thread counts for labels
+            const allThreads = [...new Set(runs.map(r => r.threads))].sort((a, b) => a - b);
+
+            if (charts[canvasId]) charts[canvasId].destroy();
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: allThreads,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8' } },
+                        title: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Ops/Sec', color: '#94a3b8' }
+                        },
+                        x: {
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Threads', color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderLatencyChart(canvasId, runs) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            
+            // Average P95 per map type
+            const mapStats = {};
+            runs.forEach(run => {
+                if (!mapStats[run.map]) mapStats[run.map] = [];
+                mapStats[run.map].push(run.latency.p95Micros);
+            });
+
+            const labels = Object.keys(mapStats);
+            const data = labels.map(map => {
+                const values = mapStats[map];
+                return values.reduce((a, b) => a + b, 0) / values.length;
+            });
+
+            if (charts[canvasId]) charts[canvasId].destroy();
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Avg P95 Latency (µs)',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(34, 197, 94, 0.8)',
+                            'rgba(234, 179, 8, 0.8)',
+                            'rgba(168, 85, 247, 0.8)'
+                        ],
+                        borderColor: [
+                            '#3b82f6', '#ef4444', '#22c55e', '#eab308', '#a855f7'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Microseconds', color: '#94a3b8' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderOpsChart(canvasId, runs) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            
+            // Total ops per map type
+            const mapOps = {};
+            runs.forEach(run => {
+                mapOps[run.map] = (mapOps[run.map] || 0) + run.operations;
+            });
+
+            const labels = Object.keys(mapOps);
+            const data = labels.map(map => mapOps[map]);
+
+            if (charts[canvasId]) charts[canvasId].destroy();
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(34, 197, 94, 0.8)',
+                            'rgba(234, 179, 8, 0.8)',
+                            'rgba(168, 85, 247, 0.8)'
+                        ],
+                        borderColor: '#1e293b',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#94a3b8' } },
+                    }
+                }
+            });
+        }
+        
+        // Initial load if results exist
+        fetchResults();
+    </script>
+</body>
+</html>

@@ -291,25 +291,37 @@
 
         async function fetchResults() {
             try {
+                console.log('Fetching results...');
                 const response = await fetch('/api/results');
+                console.log('Response status:', response.status);
                 const data = await response.json();
+                console.log('Data received:', data);
                 
                 if (data.error) {
-                    alert(data.error);
+                    console.log('Error in data:', data.error);
                     return;
                 }
 
+                if (!data.runs || data.runs.length === 0) {
+                    console.log('No runs found in data');
+                    return;
+                }
+
+                console.log('Showing results section and rendering charts');
                 document.getElementById('resultsSection').classList.remove('hidden');
                 renderCharts(data);
                 
                 // Scroll to results
-                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
             } catch (e) {
-                console.error("Failed to fetch results", e);
+                console.error("Failed to fetch results:", e);
             }
         }
 
         function renderCharts(data) {
+            console.log('renderCharts called with', data.runs.length, 'runs');
             // Process data
             // We need to aggregate runs (average across repeats)
             const runs = data.runs;
@@ -322,10 +334,12 @@
 
             // 1. Read Heavy Throughput vs Threads
             const readHeavyRuns = runs.filter(r => r.workload === 'read-heavy');
+            console.log('Read-heavy runs:', readHeavyRuns.length);
             renderThroughputChart('readHeavyChart', readHeavyRuns, 'Read-Heavy Throughput');
 
             // 2. Mixed Throughput vs Threads
             const mixedRuns = runs.filter(r => r.workload === 'mixed');
+            console.log('Mixed runs:', mixedRuns.length);
             renderThroughputChart('mixedChart', mixedRuns, 'Mixed Workload Throughput');
 
             // 3. Latency P95 (Average across all runs per map)
@@ -442,13 +456,29 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y.toFixed(2) + ' µs';
+                                }
+                            }
+                        }
                     },
                     scales: {
                         y: {
-                            beginAtZero: true,
+                            type: 'logarithmic',
+                            min: 0.01,
                             grid: { color: '#334155' },
-                            ticks: { color: '#94a3b8' },
-                            title: { display: true, text: 'Microseconds', color: '#94a3b8' }
+                            ticks: { 
+                                color: '#94a3b8',
+                                callback: function(value) {
+                                    if (value === 0.01 || value === 0.1 || value === 1 || value === 10) {
+                                        return value + ' µs';
+                                    }
+                                    return '';
+                                }
+                            },
+                            title: { display: true, text: 'Microseconds (log scale)', color: '#94a3b8' }
                         },
                         x: {
                             grid: { display: false },

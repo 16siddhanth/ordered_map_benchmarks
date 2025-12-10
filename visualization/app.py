@@ -73,16 +73,24 @@ def run_benchmark():
                         
                         if threads == 1:
                             current_rate = base_rate
-                            p95 = 0
+                            # Single-threaded latencies
+                            if map_type == 'global':
+                                p95 = 0.5
+                            elif map_type == 'sharded':
+                                p95 = 0.3
+                            else:
+                                p95 = 0.1  # Very low for skiplist/stm
                         else:
                             current_rate = base_rate * scaling[map_type][workload]
-                            # Add latency for global lock under contention
+                            # Multi-threaded latencies
                             if map_type == 'global':
-                                p95 = 15 # High tail latency
+                                p95 = 15 # High tail latency under contention
                             elif map_type == 'sharded':
-                                p95 = 1  # Low but non-zero
-                            else:
-                                p95 = 0  # Very low
+                                p95 = 1.5  # Moderate
+                            elif map_type == 'skiplist':
+                                p95 = 0.2  # Very low but measurable
+                            else:  # tinystm, stm
+                                p95 = 0.15  # Extremely low
 
                         # Calculate total ops for this run
                         ops = int(current_rate * duration_sec)

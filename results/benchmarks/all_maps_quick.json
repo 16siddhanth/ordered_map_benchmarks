@@ -6,13 +6,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 1,
-      "operations": 19467316,
-      "opsPerSec": 6489105.333333333,
+      "operations": 19204652,
+      "opsPerSec": 6401550.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -26,13 +26,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 2,
-      "operations": 19627545,
-      "opsPerSec": 6542515.0,
+      "operations": 19794695,
+      "opsPerSec": 6598231.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -46,8 +46,8 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 1,
-      "operations": 6975699,
-      "opsPerSec": 2325233.0,
+      "operations": 6919594,
+      "opsPerSec": 2306531.3333333335,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
@@ -66,8 +66,8 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 2,
-      "operations": 6606467,
-      "opsPerSec": 2202155.6666666665,
+      "operations": 6838065,
+      "opsPerSec": 2279355.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
@@ -86,13 +86,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 1,
-      "operations": 15177971,
-      "opsPerSec": 5059323.666666667,
+      "operations": 15942623,
+      "opsPerSec": 5314207.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -106,13 +106,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 2,
-      "operations": 16298692,
-      "opsPerSec": 5432897.333333333,
+      "operations": 15434876,
+      "opsPerSec": 5144958.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -126,8 +126,8 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 1,
-      "operations": 4751183,
-      "opsPerSec": 1583727.6666666667,
+      "operations": 4762843,
+      "opsPerSec": 1587614.3333333333,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
@@ -146,8 +146,8 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 2,
-      "operations": 4689157,
-      "opsPerSec": 1563052.3333333333,
+      "operations": 4565703,
+      "opsPerSec": 1521901.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
@@ -166,13 +166,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 1,
-      "operations": 16659295,
-      "opsPerSec": 5553098.333333333,
+      "operations": 15404945,
+      "opsPerSec": 5134981.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.3,
         "p99Micros": 0
       },
       "metrics": {
@@ -186,13 +186,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 2,
-      "operations": 15397778,
-      "opsPerSec": 5132592.666666667,
+      "operations": 16145950,
+      "opsPerSec": 5381983.333333333,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.3,
         "p99Micros": 0
       },
       "metrics": {
@@ -206,13 +206,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 1,
-      "operations": 29407360,
-      "opsPerSec": 9802453.333333334,
+      "operations": 28444924,
+      "opsPerSec": 9481641.333333334,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 1,
+        "p95Micros": 1.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -226,13 +226,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 2,
-      "operations": 27885968,
-      "opsPerSec": 9295322.666666666,
+      "operations": 27217717,
+      "opsPerSec": 9072572.333333334,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 1,
+        "p95Micros": 1.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -246,13 +246,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 1,
-      "operations": 15589262,
-      "opsPerSec": 5196420.666666667,
+      "operations": 15984768,
+      "opsPerSec": 5328256.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.3,
         "p99Micros": 0
       },
       "metrics": {
@@ -266,13 +266,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 2,
-      "operations": 16106520,
-      "opsPerSec": 5368840.0,
+      "operations": 16071829,
+      "opsPerSec": 5357276.333333333,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.3,
         "p99Micros": 0
       },
       "metrics": {
@@ -286,13 +286,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 1,
-      "operations": 22664065,
-      "opsPerSec": 7554688.333333333,
+      "operations": 23680628,
+      "opsPerSec": 7893542.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 1,
+        "p95Micros": 1.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -306,13 +306,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 2,
-      "operations": 22936931,
-      "opsPerSec": 7645643.666666667,
+      "operations": 22393545,
+      "opsPerSec": 7464515.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 1,
+        "p95Micros": 1.5,
         "p99Micros": 0
       },
       "metrics": {
@@ -326,13 +326,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 1,
-      "operations": 11885983,
-      "opsPerSec": 3961994.3333333335,
+      "operations": 12386241,
+      "opsPerSec": 4128747.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -346,13 +346,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 2,
-      "operations": 12340075,
-      "opsPerSec": 4113358.3333333335,
+      "operations": 11983995,
+      "opsPerSec": 3994665.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -366,13 +366,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 1,
-      "operations": 31869439,
-      "opsPerSec": 10623146.333333334,
+      "operations": 32115497,
+      "opsPerSec": 10705165.666666666,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.2,
         "p99Micros": 0
       },
       "metrics": {
@@ -386,13 +386,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 2,
-      "operations": 34143771,
-      "opsPerSec": 11381257.0,
+      "operations": 32740641,
+      "opsPerSec": 10913547.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.2,
         "p99Micros": 0
       },
       "metrics": {
@@ -406,13 +406,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 1,
-      "operations": 10931089,
-      "opsPerSec": 3643696.3333333335,
+      "operations": 10552190,
+      "opsPerSec": 3517396.6666666665,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -426,13 +426,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 2,
-      "operations": 11321026,
-      "opsPerSec": 3773675.3333333335,
+      "operations": 10591209,
+      "opsPerSec": 3530403.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -446,13 +446,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 1,
-      "operations": 32108546,
-      "opsPerSec": 10702848.666666666,
+      "operations": 30421333,
+      "opsPerSec": 10140444.333333334,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.2,
         "p99Micros": 0
       },
       "metrics": {
@@ -466,13 +466,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 2,
-      "operations": 31971523,
-      "opsPerSec": 10657174.333333334,
+      "operations": 32126799,
+      "opsPerSec": 10708933.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.2,
         "p99Micros": 0
       },
       "metrics": {
@@ -486,13 +486,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 1,
-      "operations": 10699466,
-      "opsPerSec": 3566488.6666666665,
+      "operations": 11328322,
+      "opsPerSec": 3776107.3333333335,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -506,13 +506,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 2,
-      "operations": 11020382,
-      "opsPerSec": 3673460.6666666665,
+      "operations": 10819185,
+      "opsPerSec": 3606395.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -526,13 +526,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 1,
-      "operations": 27232258,
-      "opsPerSec": 9077419.333333334,
+      "operations": 27998967,
+      "opsPerSec": 9332989.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -546,13 +546,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 2,
-      "operations": 27222635,
-      "opsPerSec": 9074211.666666666,
+      "operations": 26938493,
+      "opsPerSec": 8979497.666666666,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -566,13 +566,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 1,
-      "operations": 9189826,
-      "opsPerSec": 3063275.3333333335,
+      "operations": 9973974,
+      "opsPerSec": 3324658.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -586,13 +586,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 2,
-      "operations": 9304912,
-      "opsPerSec": 3101637.3333333335,
+      "operations": 9764065,
+      "opsPerSec": 3254688.3333333335,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -606,13 +606,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 1,
-      "operations": 26569140,
-      "opsPerSec": 8856380.0,
+      "operations": 25413899,
+      "opsPerSec": 8471299.666666666,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -626,13 +626,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 2,
-      "operations": 25969842,
-      "opsPerSec": 8656614.0,
+      "operations": 25157807,
+      "opsPerSec": 8385935.666666667,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -646,13 +646,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 1,
-      "operations": 10169858,
-      "opsPerSec": 3389952.6666666665,
+      "operations": 9821770,
+      "opsPerSec": 3273923.3333333335,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -666,13 +666,13 @@
       "workload": "read-heavy",
       "threads": 1,
       "repeat": 2,
-      "operations": 10486851,
-      "opsPerSec": 3495617.0,
+      "operations": 10222282,
+      "opsPerSec": 3407427.3333333335,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -686,13 +686,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 1,
-      "operations": 27149742,
-      "opsPerSec": 9049914.0,
+      "operations": 27842618,
+      "opsPerSec": 9280872.666666666,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -706,13 +706,13 @@
       "workload": "read-heavy",
       "threads": 4,
       "repeat": 2,
-      "operations": 28697385,
-      "opsPerSec": 9565795.0,
+      "operations": 28968832,
+      "opsPerSec": 9656277.333333334,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -726,13 +726,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 1,
-      "operations": 8834160,
-      "opsPerSec": 2944720.0,
+      "operations": 8932618,
+      "opsPerSec": 2977539.3333333335,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -746,13 +746,13 @@
       "workload": "mixed",
       "threads": 1,
       "repeat": 2,
-      "operations": 8381300,
-      "opsPerSec": 2793766.6666666665,
+      "operations": 8436375,
+      "opsPerSec": 2812125.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.1,
         "p99Micros": 0
       },
       "metrics": {
@@ -766,13 +766,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 1,
-      "operations": 26854354,
-      "opsPerSec": 8951451.333333334,
+      "operations": 27446689,
+      "opsPerSec": 9148896.333333334,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
@@ -786,13 +786,13 @@
       "workload": "mixed",
       "threads": 4,
       "repeat": 2,
-      "operations": 28638347,
-      "opsPerSec": 9546115.666666666,
+      "operations": 29058870,
+      "opsPerSec": 9686290.0,
       "durationMillis": 3000,
       "latency": {
         "meanMicros": 0,
         "p50Micros": 0,
-        "p95Micros": 0,
+        "p95Micros": 0.15,
         "p99Micros": 0
       },
       "metrics": {
